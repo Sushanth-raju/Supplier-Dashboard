@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Supplier Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Playfair+Display&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <style>
+      div.solid {
+        border-style: solid;
+        height: 12vh;
+        width: 100%;
+        border-width: thin;
+        border-color: #00442f;
+      }
+      nav {
+        width: 100%;
+        height: 12vh;
+        background-color: rgba(255, 255, 255, 0.233);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        text-transform: uppercase;
+        border-bottom: 2px solid lightgrey;
+      }
+      nav .logo {
+        width: 25%;
+        text-align: center;
+        color: #e06f06;
+      }
+      nav .menu {
+        width: 40%;
+        display: flex;
+        justify-content: space-around;
+      }
+      nav .menu a {
+        margin-left: 250px;
+        width: 25%;
+        text-decoration: none;
+        color: #e06f06;
+        font-weight: bold;
+        border-style: solid;
+        text-align: center;
+        padding: 15px;
+      }
+
+      nav .menu a:first-child {
+        color: green;
+      }
+
+      body {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      .button {
+        padding: 15px;
+        display: block;
+        float: right;
+        font-size: 15px;
+        margin: 20px 150px;
+        cursor: pointer;
+        color: #00442f;
+        text-align: center;
+        border: 2px solid #00442f;
+        width: 120px;
+        font-family: "Open Sans", sans-serif;
+        font-weight: 900;
+      }
+
+      h1 {
+        font-size: 45px;
+        font-family: "Playfair Display", serif;
+      }
+
+      #container {
+        width: 40%;
+        height: 80px;
+        margin: 20px;
+        display: inline-block;
+        border: 2px solid black;
+        text-align: center;
+        padding: 5px;
+      }
+
+      .box {
+        width: 30%;
+        height: 40px;
+        margin: 10px;
+        display: inline-block;
+        border: 1px solid #00442f;
+        text-align: left;
+        font-family: "Open Sans", sans-serif;
+        font-size: 20px;
+        border-width: thin;
+        font-weight: bold;
+        justify-content: center;
+        padding-top: 20px;
+        padding-left: 60px;
+      }
+
+      .center {
+        margin: 20px auto;
+        width: 60%;
+        border: 50px;
+        padding: 100px;
+        text-align: center;
+      }
+
+      i {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      a {
+        text-decoration: none;
+        color: black;
+        position: relative;
+        margin-left: 15px;
+      }
+    </style>
+
+    <header>
+      <nav>
+        <div class="logo">
+          <img src="{{ url_for('static', filename='pics4.png') }}" alt="" />
+        </div>
+        <div class="menu">
+          <a href="/logout_sess">LOG OUT</a>
+        </div>
+      </nav>
+    </header>
+    <h1 align="center">Supplier</h1>
+
+    <form id="form_1" action="\smain" method="POST">
+      <input id="send_val" value="" name="findItems" type="hidden" />
+
+      <div class="container">
+        <div class="center">
+          <div class="box" id="id_sapprove">
+            <i class="fas fa-tasks fa-fw"></i><a href="#">Stocks To Approve</a>
+          </div>
+
+          <div class="box" id="id_pedit">
+            <i class="fas fa-edit fa-fw"></i><a href="#">Price Edit</a>
+          </div>
+
+          <div class="box" id="id_vprev">
+            <i class="fas fa-arrow-left fa-fw"></i
+            ><a href="#">View Previous Stock</a>
+          </div>
+
+          <div class="box">
+            <i class="fas fa-lock fa-fw"></i
+            ><a href="/spass">Change Password</a>
+          </div>
+        </div>
+      </div>
+      <script>
+        document.getElementById("id_sapprove").onclick = function sup_click() {
+          document.getElementById("send_val").value = 1;
+          document.getElementById("form_1").submit();
+        };
+
+        document.getElementById("id_pedit").onclick = function company_click() {
+          document.getElementById("send_val").value = 2;
+          document.getElementById("form_1").submit();
+        };
+        document.getElementById("id_vprev").onclick =
+          function inventory_click() {
+            document.getElementById("send_val").value = 3;
+            document.getElementById("form_1").submit();
+          };
+      </script>
+    </form>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/js/all.min.js"></script>
+  </body>
+</html>
+
+<!-- 
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SUPPLIER INDEX</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
+</head>
+
+<body style="background-image: url('{{ url_for('static', filename='pics3.jpg')}}')">
+
+    <input style="display: none;" type="checkbox" id="close">
+
+    <label for="close">
+        <span id="open-btn" class="fa fa-bars"></span>
+    </label>
+
+    <nav>
+        <a href="#" class="brand">Index</a>
+        <label for="close">
+            <span id="close-btn" class="fas fa-times"></span>
+        </label>
+
+        <ul>
+            <form id="form_1" action="\smain" method="POST">
+                <input id="send_val" value="" name="findItems" type="hidden" />
+                <li id="id_sapprove" class="list-item"><i class="nav-link fas fa-tasks fa-fw"></i><a href="#">Stocks To
+                        Approve</a></li>
+                <li id="id_pedit" class="list-item"><i class="nav-link fas fa-edit fa-fw"></i><a href="#">Price Edit</a>
+                </li>
+                <li id="id_vprev" class="list-item"><i class="nav-link fas fa-arrow-left fa-fw"></i><a href="#">View
+                        Previous Stock</a></li>
+
+                <script>
+                    document.getElementById('id_sapprove').onclick = function sup_click() {
+                        document.getElementById('send_val').value = 1;
+                        document.getElementById('form_1').submit();
+                    }
+
+                    document.getElementById('id_pedit').onclick = function company_click() {
+                        document.getElementById('send_val').value = 2;
+                        document.getElementById('form_1').submit();
+                    }
+                    document.getElementById('id_vprev').onclick = function inventory_click() {
+                        document.getElementById('send_val').value = 3;
+                        document.getElementById('form_1').submit();
+                    }
+                </script>
+            </form>
+
+            <li class="list-item"><i class="nav-link fas fa-sign-out-alt fa-fw"></i><a href="/supplierindex">Logout</a>
+            </li>
+            <li class="list-item"><i class="nav-link fas fa-lock fa-fw"></i><a href="/spass">Change Password</a></li>
+
+
+        </ul>
+    </nav>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/js/all.min.js"></script>
+
+</body>
+
+</html> -->
+
+<!-- <html>
+    <head>
+        <title>Supplier Login</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles/home.css') }}"/>
+        
+        <style>
+            body {
+            margin: 0;
+            padding: 0;
+            background-image: url('https://www.dnnsoftware.com/Portals/0/Images/hero-background-4-5.jpg?ver=2017-08-17-191010-163');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative
+            }
+            button {
+            padding: 10px;
+            display:block;
+            float:right;
+            background-color:#02225c;
+            color: white;
+            text-align:center;
+            }
+            button:hover {
+            background-color: #254b85;
+            }
+        </style>
+    </head>
+    <body>
+        <a href="/supplierindex"><button>LOGOUT</button></a>
+        <a href="/spass"><button>CHANGE PASSWORD</button></a>
+        <br><br>
+        <h3><center>{{ msg }}</center></h3>
+        <br><br>
+        <form method="POST" action="\smain">
+            <center>
+            <label style="font-size: medium;" for="name"><b>SELECT WHO YOU ARE</b> </label>
+                <br><br>
+                <select name="name">
+                    <option value="1">STOCKS TO APPROVE</option>
+                    <option value="2">PRICE EDIT</option>
+                    <option value="3">VIEW PREVIOUS STOCK</option>
+                </select>
+                <br><br>
+            <input type="submit" value="SUBMIT">
+            </center>
+        </form>
+        
+    </body>
+</html> -->

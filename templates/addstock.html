@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <title>Add stock</title>
+    <style>
+      .c__ {
+        margin: 10px;
+        height: 300px;
+        margin-top: 50px;
+      }
+      .container c__ {
+        margin-left:20px;
+      }
+      nav {
+        width: 100%;
+        height: 12vh;
+        background-color: rgba(255, 255, 255, 0.233);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        text-transform: uppercase;
+        border-bottom: 2px solid lightgrey;
+      }
+      nav .logo {
+        width: 25%;
+        text-align: center;
+        color: #e06f06;
+      }
+      nav .menu {
+        width: 40%;
+        display: flex;
+        justify-content: space-around;
+      }
+      nav .menu a {
+        margin-left: 250px;
+        width: 25%;
+        text-decoration: none;
+        color: #e06f06;
+        font-weight: bold;
+        border-style: solid;
+        text-align: center;
+        padding: 15px;
+      }
+
+      nav .menu a:first-child {
+        color: green;
+      }
+      .lebble__ {
+        font-family: "Times New Roman", Times, serif;
+        font-weight: bold;
+        margin-bottom: 30px;
+      }
+      .lebble__r {
+        font-family: "Times New Roman", Times, serif;
+        font-weight: bold;
+        margin-bottom: 30px;
+      }
+      h3{
+        font-size:35px;
+      }
+
+      .input___ {
+        width: 90%;
+        height: 40px;
+      }
+      .input___l {
+        width: 90%;
+      }
+      .input___lr {
+        width: 90%;
+        margin-top:25px;
+      }
+      .add_submit_btn {
+        width: 90%;
+        height: 38px;
+        background-color: #00442f;
+        color: white;
+        margin-top: 40px;
+        margin-bottom: 10px;
+        text-align: center;
+        border: none;
+      }
+      .r_submit_btn {
+        width: 90%;
+        height: 38px;
+        background-color: #00442f;
+        color: white;
+        margin-top: 12%;
+        margin-bottom: 10px;
+        text-align: center;
+        border: none;
+      }
+      .submit_btn {
+        width: 45%;
+        height: 40px;
+        background-color: #acc927;
+        color: white;
+        margin-top: 110px;
+        margin-bottom: 10px;
+        margin-left: 298px;
+        text-align: center;
+        border: none;
+      }
+      .logout_btn {
+        color: #00442f;
+      }
+      .logout_btn:hover {
+        background-color: #00442f;
+      }
+      .pop_up {
+        width: 75%;
+        height: 50px;
+        margin: 10px;
+      }
+      select {
+        width: 268px;
+        padding: 5px;
+        line-height: 1;
+        background: url(../static/images/down-arrow.svg) no-repeat right;
+        -webkit-appearance: none;
+        background-position-x: 415px;
+      }
+      .blackiconcolor {
+        color: black;
+      }
+      #s_id{
+        margin:15px;
+        margin-left:1px;
+      }
+      .g_border {
+        border: 1px solid black;
+      }
+      .header_table {
+        text-align: center;
+        padding: 5px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+      .p_table_data {
+        width: 200px;
+      }
+      .headers {
+        margin-bottom: 30px;
+      }
+      h5 {
+        margin-top:15px;
+        margin-left:45px;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div class="logo">
+        <img src="{{ url_for('static', filename='pics4.png') }}" alt="" />
+      </div>
+      <div class="menu">
+        <a href="/logout_sess">LOG OUT</a>
+      </div>
+    </nav>
+    <div class="container d-flex w-100">
+      <div class="container c__">
+        <h3 class="lebble__">Add stock</h3>
+        <form method="POST" action="/stock">
+          <div class="form_group">
+            <label for="name" class="input___l" style="margin-bottom: 0; font-size: 12px">SELECT PRODUCT</label>
+            <select class="input___" name="name">
+              {% for x in li %}
+              <option value="{{ x.ITEM }}">{{ x.ITEM }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="form_group" style="margin-top: 20px">
+            <label for="pass" class="input___l" style="margin-bottom: 0; font-size: 12px">QUANTITY</label>
+            <input id="pass" type="number" name="pass" placeholder="Enter Quantity" required class="input___"/><br>
+            <!--<label for="pass" class="input___l" style="margin-bottom: 0; font-size: 12px">Supplier ID</label>-->
+            <!--<input id = "s_id" type="text" name="s_id" placeholder="Enter supplier id">-->
+            <br>
+            <label for="name" class="input___l" style="margin-bottom: 0; font-size: 13px">SUPPLIER NAME</label>
+            <select class="input___" name="s_id">
+              {% for y in spl %}
+              <option value="{{ y.name }}">{{ y.name }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <button href="#" class="add_submit_btn" value="SUBMIT" type="submit" onclick="s_popup()">
+            Add stock
+          </button>
+        </form>
+      </div>
+      <div class="container c__">
+        <h3 class="lebble__">Remove stock</h3>
+        <form action="/remove" method="POST">
+          <div class="form_group" style="margin-top: 20px">
+            <label for="name" class="input___l" style="margin-bottom: 0; font-size: 12px">SELECT PRODUCT</label>
+            <select class="input___" name="name">
+              {% for x in li %}
+              <option value="{{ x.ITEM }}">{{ x.ITEM }}</option>
+              {% endfor %}
+            </select>
+            <label for="no" class="input___lr" style="margin-bottom: 0; font-size: 12px">STOCK NO</label>
+            <input type="number" id="no" name="no" class="input___" type="text" required/>
+          </div>
+          
+          <button href="#" class="r_submit_btn" value="SUBMIT" type="submit" onclick="f_popup()">Remove stock</button>
+        </form>
+      </div>
+      <!--<div id="popup_container" class="container c__"></div>-->
+    </div>
+    <br><br><br>
+    <div class="container">
+      <form action="/cmain" method="POST">
+        <input class="submit_btn" type="submit" value="SUBMIT" />
+        <!-- <button href="#" class="submit_btn" value="SUBMIT" type="submit">SUBMIT</button> -->
+      </form>
+    </div>
+
+    <div class="container w-75" style="margin-bottom: 30px">
+      <div class="header_table headers d-flex justify-content-around w-100">
+        <h5>Sn No.</h5>
+        <h5>Product</h5>
+        <h5>Supplier ID</h5>
+      </div>
+      {%for row in tbl%}
+      <div class="header_table g_border d-flex justify-content-around w-100">
+        <p class="p_table_data">{{row[0]}}</p>
+        <p class="p_table_data">{{row[1]}}</p>
+        <p class="p_table_data">{{row[2]}}</p>
+      </div>
+      {%endfor%}
+    </div>
+
+    <script>
+      function f_popup() {
+        var div_top = document.createElement("div");
+        div_top.id = "failer_popup";
+        div_top.className = "d-flex pop_up ";
+        div_top.style =
+          "background-color: #eb0410;justify-content: center;align-items: center;";
+
+        var msg_s = document.createElement("lable");
+        msg_s.style = "color: white;";
+        msg_s.innerText = "Item removed successfully";
+        //div_top.innerText.appendChild(msg_s);
+        div_top.append(msg_s);
+
+        var icon_s = document.createElement("i");
+        icon_s.className = "fa fa-check";
+        icon_s.style = "color: white; margin-left: 5px;";
+        div_top.append(icon_s);
+        let container = document.getElementById("popup_container");
+        container.appendChild(div_top);
+        setTimeout(() => {
+          div_top.parentNode.removeChild(div_top);
+        }, 1000);
+      }
+
+      function s_popup() {
+        var div_top = document.createElement("div");
+        div_top.id = "success_popup";
+        div_top.className = "d-flex pop_up ";
+        div_top.style =
+          "background-color: #16e316;justify-content: center; align-items: center;";
+
+        var msg_s = document.createElement("lable");
+        msg_s.style = "color: white;";
+        msg_s.innerText = "Item added successfully";
+        //div_top.innerText.appendChild(msg_s);
+        div_top.append(msg_s);
+
+        var icon_s = document.createElement("i");
+        icon_s.className = "fa fa-check";
+        icon_s.style = "color: white; margin-left: 5px;";
+        div_top.append(icon_s);
+        let container = document.getElementById("popup_container");
+        container.appendChild(div_top);
+        setTimeout(() => {
+          div_top.parentNode.removeChild(div_top);
+        }, 1000);
+      }
+    </script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous" ></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>

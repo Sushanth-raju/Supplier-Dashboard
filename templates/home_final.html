@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+
+    <title>Zang Dashboard</title>
+  </head>
+
+  <body>
+    <style>
+      body {
+        background-image: url("{{url_for('static', filename='bg_img.png')}}");
+        background-size: cover;
+        background-repeat: no-repeat;
+        width: 100%;
+        height: auto;
+      }
+
+      .input-label {
+        font-size: 13px;
+        padding: 0;
+        margin: 0;
+      }
+      .submit-btn {
+        text-align: center;
+        width: 100%;
+        outline: none;
+        border: none;
+        padding: 10px;
+        background-color: #00442f;
+        color: white;
+        margin-top: 30px;
+      }
+      .input {
+        width: 100%;
+      }
+      .card-body {
+        padding: 10% 10%;
+      }
+
+      fieldset {
+        overflow: hidden;
+      }
+    </style>
+
+    <div style="margin-top: 2%; margin-left: 10%">
+      <img src="{{url_for('static', filename='zang_bg_logo.png')}}" alt="logo"/>
+    </div>
+      <div class="card-group" style=" width: 30%; display: block; margin-left: auto; margin-right: auto;margin-top: 6%;">
+        <div class="card">
+          <div class="card-body">
+          <form id="form" action="/res" method="POST">
+            <div style="text-align: center">{{msg}}</div><br />
+            <h1 class="card-title" style="text-align: center">Login</h1>
+            
+            <br />
+            <div style="display: inline">
+              <div class="d-flex justify-content-between" style="width: 100%; margin: 10px auto">
+                <div>
+                  <label for="SUPPLIER" class="label-radio">Supplier</label>
+                  <input type="radio" class="radio" name="x" value="SUPPLIER" id="SUPPLIER" required/>
+                </div>
+                <div>
+                  <label for="COMPANY" class="label-radio">Company</label>
+                  <input type="radio" class="radio" name="x" value="COMPANY" id="COMPANY" required/>
+                </div>
+                <div>
+                  <label for="INVENTORY" class="label-radio">Inventory</label>
+                  <input type="radio" class="radio" name="x" value="INVENTORY" id="INVENTORY"required/>
+                </div>
+              </div>
+              <br />
+
+              <label name="name" for="username" class="input-label">USERNAME</label><br/>
+              <div style="text-align: center">
+                <input class="input" type="text" name="username" placeholder="USERNAME" class="card-input" required/>
+              </div>
+              <br/>
+              <label name="name" class="input-label" for="password">PASSWORD</label><br/>
+              <div style="text-align: center">
+                <input class="input" type="password" name="password" placeholder="PASSWORD" class="card-input" required/>
+              </div>
+
+              <input type="checkbox" />
+              <span style="color: #ddd">Remember Me</span>
+            </div>
+
+            <br />
+            
+            <button class="submit-btn">Login</button>
+            </form>
+            <div id="sign_up">
+            <form action="\sgnup" method=['GET','POST'>
+            <button class="submit-btn" action="\sgnup">Sign Up</button>
+            </form>
+            </div>
+
+            <script>
+              var signUp = document.getElementById("sign_up");
+              signUp.style.display = "none";
+              document.getElementById("SUPPLIER").onclick =function supplier() {
+                  signUp.style.display = "block";
+                };
+
+              document.getElementById("COMPANY").onclick = function company() {
+                signUp.style.display = "none";
+              };
+
+              document.getElementById("INVENTORY").onclick =
+                function Inventory() {
+                  signUp.style.display = "none";
+                };
+            </script>
+          </div>
+        </div>
+      </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Company index</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Playfair+Display&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<style>
+    div.solid {
+        border-style: solid;
+        height: 12vh;
+        width: 100%;
+        border-width: thin;
+        border-color: #00442F;
+    }
+
+    body {
+        margin: 0px;
+        padding: 0px;
+    }
+
+    .button {
+        padding: 15px;
+        display: block;
+        float: right;
+        font-size: 15px;
+        margin: 20px 150px;
+        cursor: pointer;
+        color: #00442F;
+        text-align: center;
+        border: 2px solid #00442F;
+        width: 120px;
+        font-family: 'Open Sans', sans-serif;
+        font-weight: 900;
+    }
+
+    h2 {
+        font-size: 35px;
+        font-family: 'Playfair Display', serif;
+
+    }
+
+    #container {
+        width: 40%;
+        height: 80px;
+        margin: 20px;
+        display: inline-block;
+        border: 2px solid black;
+        text-align: center;
+        padding: 100px;
+
+    }
+
+    .box {
+        width: 100%;
+        height: 30px;
+        margin: 10px;
+        display: inline-block;
+        border: 1px solid #00442F;
+        text-align: center;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 20px;
+        border-width: thin;
+        font-weight: bold;
+
+
+    }
+
+    .center {
+        margin: 100px auto;
+        width: 20%;
+        border: 50px;
+        padding: 100px;
+        text-align: center;
+    }
+
+    a {
+        text-decoration: none;
+        color: black;
+        position: relative;
+        margin-left: 15px;
+
+
+    }
+
+    .flex-container {
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    nav {
+        width: 100%;
+        height: 12vh;
+        background-color: rgba(255, 255, 255, 0.233);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        text-transform: uppercase;
+        border-bottom: 2px solid lightgrey;
+    }
+    nav .logo {
+        width: 25%;
+        text-align: center;
+        color: #e06f06;
+    }
+    nav .menu {
+        width: 40%;
+        display: flex;
+        justify-content: space-around;
+    }
+    nav .menu a {
+        margin-left: 250px;
+        width: 25%;
+        text-decoration: none;
+        color: #e06f06;
+        font-weight: bold;
+        border-style: solid;
+        text-align: center;
+        padding: 15px;
+    }
+
+    nav .menu a:first-child {
+        color: green;
+    }
+
+    .flex-box {
+        width: 19%;
+        height: 40px;
+        background: white;
+        color: black;
+        border: 2px solid #00442F;
+        border-radius: 1px;
+        margin: 10px;
+        text-align: left;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 20px;
+        border-width: thin;
+        font-weight: bold;
+        padding-top: 12px;
+        justify-content: right;
+        padding-left: 50px;
+    }
+
+    .flex-box:hover {
+        background-color: lightgrey
+    }
+</style>
+
+<body>
+    <header>
+        
+        <nav>
+			<div class="logo"><img src="{{ url_for('static', filename='pics4.png') }}" alt=""/></div>
+			<div class="menu">
+			<a href="/logout_sess">LOG OUT</a>
+			</div>
+		</nav>
+
+    </header>
+    <h2 align="center">Visuals</h2>
+    
+    <div>
+        <center><embed src={{ ch|safe }} /></center>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/js/all.min.js"></script>
+
+</body>
+
+</html>
+
+
+
+
+<!-- <!DOCTYPE html>
+
+<head>
+    <title>sample</title>
+    <style>
+        select {
+            width: 300px;
+            margin: 10px;
+        }
+        #btn_submit1 {
+                    background-color: white;
+                    /* Green */
+                    border: 2px solid darkgreen;
+                    color: darkgreen;
+                    padding: 10px 50px;
+                    text-align: center;
+                    text-decoration: none;
+                    
+                    font-size: 16px;
+                    margin: 2px 30%;
+                    cursor: pointer;
+                    position: absolute;
+                    top: 3px;
+                    left: 50%;
+                   
+                }
+    </style>
+
+</head>
+
+<head>
+    <h2>
+        <img src="{{url_for('static',filename='zang_logo.png')}}" width="100px" style="margin-left: 50px;" />
+        <p style="margin-top:-70px;">
+        <div style="text-align:right; width:90%;">
+            <input id="btn_submit1" type="button" value="LOG OUT" />
+
+        </div>
+        </p>
+    </h2>
+    <hr color="darkgreen" size=1px>
+    <h1 style="margin-left: 50px;"><b>Dashboard </b></h1>
+
+
+
+
+
+
+    </head>
+
+    <body>
+        <div id="messageContent" name="messageContent" cols="150" rows="35">
+            <center><embed src={{ ch|safe }} /></center>
+        </div>
+
+
+    </body>
+
+    </html> -->
+
+
+
+<!-- <html>
+    <head>
+        <title>Supplier Login</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles/home.css') }}"/>
+        <style>
+            body {
+            margin: 0;
+            padding: 0;
+            background-image: url('https://www.dnnsoftware.com/Portals/0/Images/hero-background-4-5.jpg?ver=2017-08-17-191010-163');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative
+            }
+            button {
+            padding: 10px;
+            display:block;
+            float:right;
+            background-color:#02225c;
+            color: white;
+            text-align:center;
+            }
+            button:hover {
+            background-color: #254b85;
+            }
+            
+
+        </style>
+    </head>
+    <body>
+        <br>
+        <center><h1>DASHBOARD</h1></center>
+        <br><br>
+        <div>
+            <center><embed src={{   ch|safe   }} /></center>
+        </div>
+    </body>
+</html> -->

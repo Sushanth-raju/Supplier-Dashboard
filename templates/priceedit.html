@@ -1,0 +1,160 @@
+<html>
+  <head>
+    <title>Edit Stock price</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles/home.css') }}"
+    />
+    <style>
+      table,
+      th,
+      td {
+        border: 1;
+        border-bottom: 1px solid #faf9f9;
+        border-collapse: collapse;
+        text-align: left;
+        padding: 10px;
+        margin-bottom: 40px;
+        font-size: 0.9em;
+        background-color: rgb(244, 247, 248);
+      }
+      nav {
+        width: 100%;
+        height: 12vh;
+        background-color: rgba(255, 255, 255, 0.233);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        text-transform: uppercase;
+        border-bottom: 2px solid lightgrey;
+      }
+      nav .logo {
+        width: 25%;
+        text-align: center;
+        color: #e06f06;
+      }
+      nav .menu {
+        width: 40%;
+        display: flex;
+        justify-content: space-around;
+      }
+      nav .menu a {
+        margin-left: 250px;
+        width: 25%;
+        text-decoration: none;
+        color: #e06f06;
+        font-weight: bold;
+        border-style: solid;
+        text-align: center;
+        padding: 15px;
+      }
+
+      nav .menu a:first-child {
+        color: green;
+      }
+      #btn_submit1 {
+        background-color: white;
+        /* Green */
+        border: 2px solid darkgreen;
+        color: darkgreen;
+        padding: 10px 50px;
+        text-align: center;
+        text-decoration: none;
+
+        font-size: 16px;
+        margin: 2px 30%;
+        cursor: pointer;
+        position: absolute;
+        top: 10px;
+        left: 50%;
+      }
+      #head_div {
+        padding-left: 10%;
+
+        padding-top: 5%;
+
+        font-size: 20px;
+        font-family: 36pt "Courier New", Courier, monospace;
+      }
+
+      select {
+        width: 300px;
+        margin-top: 0px;
+        margin-left: 120px;
+        font-weight: bold;
+        padding: 3px;
+
+        background-image: linear-gradient(
+            45deg,
+            transparent 50%,
+            rgb(255, 255, 255) 50%
+          ),
+          linear-gradient(135deg, rgb(255, 255, 255) 50%, transparent 50%),
+          linear-gradient(to right, rgb(0, 0, 0), rgb(0, 0, 0));
+        background-position: calc(100% - 20px) calc(0.7em),
+          calc(100% - 15px) calc(0.7em), 100% 0;
+        background-size: 5px 5px, 5px 5px, 2em 2em;
+        background-repeat: no-repeat;
+      }
+
+      h3 {
+        font-size: 15px;
+        margin-left: 120px;
+        font-weight: 300;
+      }
+
+      #price {
+        margin-left: 120px;
+      }
+      #btn_submit {
+        background-color: rgb(18, 61, 18);
+
+        /* Green */
+        border: none;
+        color: white;
+        padding: 8px 122px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+
+        margin-left: 120px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav>
+      <div class="logo">
+        <img src="{{ url_for('static', filename='pics4.png') }}" alt="" />
+      </div>
+      <div class="menu">
+        <a href="/logout_sess">LOG OUT</a>
+      </div>
+    </nav>
+    <div id="head_div">
+      <h2>Price edit</h2>
+      <br /><br />
+    </div>
+
+    <form method="POST" action="/price">
+      <h3>SELECT PRODUCT</h3>
+      <select id="select1" name="name">
+        {% for x in li %}
+        <option value="{{ x.ITEM }}">{{ x.ITEM }}</option>
+        {% endfor %}</select
+      ><br /><br />
+      <h3>PRICE</h3>
+      <input
+        id="price"
+        type="number"
+        name="price"
+        style="padding-left: 60px; font-weight: bold"
+      /><br /><br /><br /><br />
+      <button id="btn_submit">Submit</button>
+    </form>
+    <br />
+    <div style="font-weight: bold"><center>{{ msg }}</center></div>
+  </body>
+</html>

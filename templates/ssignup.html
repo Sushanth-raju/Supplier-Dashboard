@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+    <title>Zang Dashboard</title>
+</head>
+
+<body>
+
+    <style>
+        body {
+            background-image: url("{{ url_for('static', filename='food2.jpg') }}");
+            background-size: cover;
+            background-repeat: no-repeat;
+            width: 100%;
+            height: auto;
+        }
+        
+        h1 {
+            font-family: "Open Sans", sans-serif;
+        }
+        
+        .input-label {
+            font-size: 13px;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .submit-btn {
+            text-align: center;
+            width: 85%;
+            outline: none;
+            border: none;
+            padding: 10px;
+            background-color: #00442f;
+            color: white;
+            margin-top: 15px;
+            margin-left: 32px;
+            margin-right: 8px;
+            margin-bottom: 15px;
+        }
+        
+        .input {
+            width: 100%
+        }
+        
+        .card-body {
+            padding: 10% 10%
+        }
+        
+        fieldset {
+            overflow: hidden
+        }
+    </style>
+
+    <div style="margin-top: 2%; margin-left: 10%">
+        <img src="{{url_for('static', filename='zang_bg_logo.png')}}" alt="logo" />
+    </div>
+    <form action="/sgnupdetail" method="POST">
+        <div class="card-group" style="width: 30%; display:block;margin-left: auto;margin-right: auto;margin-top: 6%;">
+
+            <div class="card">
+
+                <div class="card-body">
+                    <div style="text-align: center">{{msg}}</div><br/>
+                    <h1 class="card-title" style="text-align: center">Sign Up</h1>
+                    <br>
+
+
+                    <label name="name" for="username" class="input-label">CREATE USERNAME</label><br />
+                    <div style="text-align:center">
+                        <input class="input" type="text" name="username" placeholder="CREATE USERNAME" class="card-input" required>
+                    </div><br />
+                    <label name="name" class="input-label" for="password">CREATE PASSWORD</label><br />
+                    <div style="text-align:center">
+                        <input class="input" type="password" placeholder="CREATE PASSWORD" name="crpassword" class="card-input" required>
+                    </div><br/>
+                    <label name="name" class="input-label" for="password">CONFIRM PASSWORD</label><br />
+                    <div style="text-align:center">
+                        <input class="input" type="password" placeholder="CONFIRM PASSWORD" name="copassword" class="card-input" required>
+                    </div>
+
+
+                </div>
+
+                <br>
+                <button class="submit-btn">Sign Up</button>
+
+
+
+            </div>
+        </div>
+
+        </div>
+    </form>
+
+
+
+
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+
+</html>

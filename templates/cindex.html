@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Company index</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Playfair+Display&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<style>
+    div.solid {
+        border-style: solid;
+        height: 12vh;
+        width: 100%;
+        border-width: thin;
+        border-color: #00442F;
+    }
+
+    body {
+        margin: 0px;
+        padding: 0px;
+    }
+
+    .button {
+        padding: 15px;
+        display: block;
+        float: right;
+        font-size: 15px;
+        margin: 20px 150px;
+        cursor: pointer;
+        color: #00442F;
+        text-align: center;
+        border: 2px solid #00442F;
+        width: 120px;
+        font-family: 'Open Sans', sans-serif;
+        font-weight: 900;
+    }
+
+    h1 {
+        font-size: 45px;
+        font-family: 'Playfair Display', serif;
+
+    }
+
+    #container {
+        width: 40%;
+        height: 80px;
+        margin: 20px;
+        display: inline-block;
+        border: 2px solid black;
+        text-align: center;
+        padding: 100px;
+
+    }
+
+    .box {
+        width: 100%;
+        height: 30px;
+        margin: 10px;
+        display: inline-block;
+        border: 1px solid #00442F;
+        text-align: center;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 20px;
+        border-width: thin;
+        font-weight: bold;
+
+
+    }
+
+    .center {
+        margin: 100px auto;
+        width: 20%;
+        border: 50px;
+        padding: 100px;
+        text-align: center;
+    }
+
+    a {
+        text-decoration: none;
+        color: black;
+        position: relative;
+        margin-left: 15px;
+
+
+    }
+
+    .flex-container {
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    nav {
+        width: 100%;
+        height: 12vh;
+        background-color: rgba(255, 255, 255, 0.233);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        text-transform: uppercase;
+        border-bottom: 2px solid lightgrey;
+    }
+    nav .logo {
+        width: 25%;
+        text-align: center;
+        color: #e06f06;
+    }
+    nav .menu {
+        width: 40%;
+        display: flex;
+        justify-content: space-around;
+    }
+    nav .menu a {
+        margin-left: 250px;
+        width: 25%;
+        text-decoration: none;
+        color: #e06f06;
+        font-weight: bold;
+        border-style: solid;
+        text-align: center;
+        padding: 15px;
+    }
+
+    nav .menu a:first-child {
+        color: green;
+    }
+    .flex-box {
+        width: 19%;
+        height: 40px;
+        background: white;
+        color: black;
+        border: 2px solid #00442F;
+        border-radius: 1px;
+        margin: 10px;
+        text-align: left;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 20px;
+        border-width: thin;
+        font-weight: bold;
+        padding-top: 12px;
+        justify-content: right;
+        padding-left: 50px;
+    }
+
+    .flex-box:hover {
+        background-color: lightgrey
+    }
+</style>
+
+<body>
+    <header>
+
+        <nav>
+			<div class="logo"><img src="{{ url_for('static', filename='pics4.png') }}" alt=""/></div>
+			<div class="menu">
+			<a href="/logout_sess">LOG OUT</a>
+			</div>
+		</nav>
+    </header>
+    <h1 align="center">Company</h1>
+    <br>
+    <br>
+    <div class="flex-container">
+
+        <form id="form_1" action="/commain" method="POST">
+            <input id="send_val" value="" name="findItems" type="hidden" />
+        </form>
+
+        <div id="id_add_stock" class="flex-box"><i class="fa fa-plus fa-fw"></i><a href='#'>Add Stock</a></div>
+
+        <div id="id_view_stock" class="flex-box"><i class="far fa-eye fa-fw"></i><a href="#">View Stock</a></div>
+
+        <div id="id_view_approved" class="flex-box"><i class="fas fa-tasks fa-fw"></i><a href="#">View Approved
+                Stock</a></div>
+
+        <div id="id_view_prev" class="flex-box"><i class="fas fa-arrow-left fa-fw"></i><a href="#">View Previous
+                Stock</a></div>
+
+        <div id="id_view_inventory" class="flex-box"><i class="fa fa-archive fa-fw"></i><a href='#'>View Inventory</a>
+        </div>
+
+        <div id="id_suppliers" class="flex-box"><i class="fa fa-users fa-fw"></i><a href='#'>Suppliers</a>
+        </div>
+
+        <script>
+            document.getElementById('id_add_stock').onclick = function sup_click() {
+                document.getElementById('send_val').value = 1;
+                document.getElementById('form_1').submit();
+            }
+
+            document.getElementById('id_view_stock').onclick = function company_click() {
+                document.getElementById('send_val').value = 2;
+                document.getElementById('form_1').submit();
+            }
+            document.getElementById('id_view_prev').onclick = function inventory_click() {
+                document.getElementById('send_val').value = 4;
+                document.getElementById('form_1').submit();
+            }
+            document.getElementById('id_view_inventory').onclick = function inventory_click() {
+                document.getElementById('send_val').value = 5;
+                document.getElementById('form_1').submit();
+            }
+            document.getElementById('id_view_approved').onclick = function inventory_click() {
+                document.getElementById('send_val').value = 3;
+                document.getElementById('form_1').submit();
+            }
+            document.getElementById('id_suppliers').onclick = function company_click() {
+                document.getElementById('send_val').value = 6;
+                document.getElementById('form_1').submit();
+            }
+
+
+
+        </script>
+
+        <form id="form_2" action="/dv" method="POST"></form>
+        </form>
+
+        <form id="form_3" action="/invoice" method="POST">
+        </form>
+
+
+        <div id="id_visuals" class="flex-box"><i class="far fa-chart-bar fa-fw"></i><a href="#">Visuals</a></div>
+
+        <script>
+            document.getElementById('id_visuals').onclick = function inventory_click() {
+
+                document.getElementById('form_2').submit();
+            }
+        </script>
+
+        <div id="id_invoice" class="flex-box"><i class="fas fa-receipt fa-fw"></i><a href="#">Invoice</a></div>
+
+        <script>
+            document.getElementById('id_invoice').onclick = function inventory_click() {
+
+                document.getElementById('form_3').submit();
+            }
+        </script>
+
+        <div class="flex-box"><i class="fas fa-lock fa-fw"></i><a href="/cpass">Change Password</a></div>
+
+
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/js/all.min.js"></script>
+
+</body>
+
+</html>
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COMPANY INDEX</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
+</head>
+
+<body style="background-image: url('{{ url_for('static', filename='pics3.jpg')}}')">
+    
+    <input style="display: none;" type="checkbox" id="close">
+
+    <label  for="close">
+        <span id="open-btn" class="fa fa-bars"></span>
+    </label>
+
+    <nav>
+        <a href="#" class="brand">Index</a>
+        <label for="close">
+            <span id="close-btn" class="fas fa-times"></span>
+        </label>
+
+        <ul>
+            <form id="form_1" action="/commain" method="POST">
+                <input id="send_val" value="" name="findItems" type="hidden" />
+                <li id="id_add_stock" class="list-item"><i class="nav-link fas fa-cart-plus fa-fw"></i><a href="#">Add
+                        Stock</a></li>
+                <li id="id_view_stock" class="list-item"><i class="nav-link fas fa-arrow-right fa-fw"></i><a
+                        href="#">View Stock</a></li>
+                <li id="id_view_approved" class="list-item"><i class="nav-link fas fa-check-double fa-fw"></i><a
+                        href="#">View Approved Stock</a></li>
+                <li id="id_view_prev" class="list-item"><i class="nav-link fas fa-arrow-left fa-fw"></i><a
+                        href="#">View Previous Stock</a></li>
+                <li id="id_view_inventory" class="list-item"><i class="nav-link fas fa-chevron-right fa-fw"></i><a
+                        href="#">View Inventory</a></li>
+
+                <script>
+                    document.getElementById('id_add_stock').onclick = function sup_click() {
+                        document.getElementById('send_val').value = 1;
+                        document.getElementById('form_1').submit();
+                    }
+
+                    document.getElementById('id_view_stock').onclick = function company_click() {
+                        document.getElementById('send_val').value = 2;
+                        document.getElementById('form_1').submit();
+                    }
+                    document.getElementById('id_view_prev').onclick = function inventory_click() {
+                        document.getElementById('send_val').value = 4;
+                        document.getElementById('form_1').submit();
+                    }
+                    document.getElementById('id_view_inventory').onclick = function inventory_click() {
+                        document.getElementById('send_val').value = 5;
+                        document.getElementById('form_1').submit();
+                    }
+                    document.getElementById('id_view_approved').onclick = function inventory_click() {
+                        document.getElementById('send_val').value = 3;
+                        document.getElementById('form_1').submit();
+                    }
+
+
+
+                </script>
+
+            </form>
+            <form id="form_2" action="/dv" method="POST"></form>
+            </form>
+
+            <form id="form_3" action="/invoice" method="POST">
+            </form>
+
+                <li id="id_visuals" class="list-item"><i class="nav-link fas fa-eye fa-fw"></i><a href="/dv">Visuals</a>
+                </li>
+
+                <script>
+                    document.getElementById('id_visuals').onclick = function inventory_click() {
+
+                        document.getElementById('form_2').submit();
+                    }
+                </script>
+            
+                <li id="id_invoice" class="list-item"><i class="nav-link fas fa-chart-bar fa-fw"></i><a href="/invoice">Invoice</a></li>
+                <script>
+                    document.getElementById('id_invoice').onclick = function inventory_click() {
+
+                        document.getElementById('form_3').submit();
+                    }
+                </script>
+            
+
+            
+            <li class="list-item"><i class="nav-link fas fa-lock fa-fw"></i><a href="/cpass">Change Password</a></li>
+            <li class="list-item"><i class="nav-link fas fa-sign-out-alt fa-fw"></i><a href="/">Logout</a>
+            </li>
+
+
+        </ul>
+    </nav>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/js/all.min.js"></script>
+
+</body>
+
+</html>
+
+
+
+
+
+ -->
+
+
+
+
+
+
+
+
+
+
+<!-- <html>
+    <head>
+        <title>Company Login</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles/home.css') }}"/>
+        <style>
+            body {
+            margin: 0;
+            padding: 0;
+            background-image: url('https://www.dnnsoftware.com/Portals/0/Images/hero-background-4-5.jpg?ver=2017-08-17-191010-163');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative
+            }
+            button {
+            padding: 10px;
+            display:block;
+            float:right;
+            background-color:#02225c;
+            color: white;
+            text-align:center;
+            }
+            button:hover {
+            background-color: #254b85;
+            }
+            
+</style>
+        </style>
+    </head>
+    <body>
+        <a href="/companyindex"><button>LOGOUT</button></a>
+        <a href="/cpass"><button>CHANGE PASSWORD</button></a>
+        <br><br>
+        <h3><center>{{ msg }}</center></h3>
+        <br><br>
+        <form method="POST" action="\commain">
+            <center>
+            <label style="font-size: medium;" for="name"><b>SELECT WHO YOU ARE</b> </label>
+                <br><br>
+                <select name="name">
+                    <option value="1">ADD STOCK</option>
+                    <option value="2">VIEW STOCK</option>
+                    <option value="3">VIEW APPROVED STOCK</option>
+                    <option value="4">VIEW PREVIOUS STOCKS</option>
+                    <option value="5">VIEW INVENTORY</option>
+                </select>
+            <br><br><br>
+            <input type="submit" value="SUBMIT">
+            </center>
+        </form>
+        <br><br>
+        <form action="/dv" method="POST">
+            <center>
+                <input type="submit" value="CLICK HERE TO SEE VISUALS">
+            </center>
+        </form>
+        <br><br>
+        <form action="/invoice" method="POST">
+            <center>
+                <input type="submit" value="CLICK HERE TO GET INVOICE">
+            </center>
+        </form>
+    </body> 
+</html> -->

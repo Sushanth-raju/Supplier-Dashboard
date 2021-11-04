@@ -1,0 +1,142 @@
+:root {
+    --primary-color: #0e3d5e;
+    --nav-color: #dfebeb;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    height: 100vh;
+    display: flex;
+    background-image: url('pics3.jpeg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+nav {
+    position: fixed;
+    background: var(--nav-color);
+    width: 320px;
+    height: 100%;
+    left: -320px;
+    transition: 0.4s ease-out;
+}
+
+nav .brand {
+    position: absolute;
+    font-size: 28px;
+    font-weight: bold;
+    margin: 32px 40px;
+}
+
+nav #close-btn {
+    position: absolute;
+    right: 2rem;
+    top: 2rem;
+    padding: .5rem;
+    width: 2rem;
+    height: 2rem;
+    border: 2px solid var(--primary-color);
+    border-radius: 50%;
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+nav #close-btn:hover {
+    color: #e0dede;
+    background: var(--primary-color);
+    transition: .5s ease;
+}
+
+nav ul {
+     position: absolute;
+     top: 6rem;
+}
+
+nav ul li {
+    padding: 1.3rem 1.5rem;
+    color: var(--primary-color);
+    width: 320px;
+    margin-left: -40px;
+    opacity: 0;
+    transition: 1s ease;
+    cursor: pointer;
+}
+
+nav ul li:hover {
+    animation: hoverAnimation .6s;
+}
+
+@keyframes hoverAnimation {
+    50% {
+        transform: translateX(20px) scale(1.1);
+    }
+}
+
+nav ul li .nav-link {
+    font-size: 1.2rem;
+}
+
+nav ul li a {
+    position: absolute;
+    font-size: 1.2rem;
+    margin-left: 12px;
+}
+
+#open-btn {
+    width: 2rem;
+    height: 2rem;
+    padding: .5rem;
+    border: 2px solid var(--primary-color);
+    border-radius: 50%;
+    margin: 1.5rem;
+    cursor: pointer;
+}
+
+#open-btn:hover {
+    background: var(--primary-color);
+    color: #e0dede;
+    transition: .5s ease;
+}
+
+
+
+input:checked ~ nav ul li:nth-child(1) {transition-delay: .2s;}
+input:checked ~ nav ul li:nth-child(2) {transition-delay: .4s;}
+input:checked ~ nav ul li:nth-child(3) {transition-delay: .6s;}
+input:checked ~ nav ul li:nth-child(4) {transition-delay: .8s;}
+input:checked ~ nav ul li:nth-child(5) {transition-delay: 1s;}
+input:checked ~ nav ul li:nth-child(6) {transition-delay: 1.2s;}
+input:checked ~ nav ul li:nth-child(7) {transition-delay: 1.4s;}
+input:checked ~ nav ul li:nth-child(8) {transition-delay: 1.6s;}
+input:checked ~ nav ul li:nth-child(9) {transition-delay: 1.8s;}
+
+input:checked ~ nav ul li {
+    margin-left: 0;
+    opacity: 1;
+}
+
+input:checked ~ nav {
+    left: 0;
+    box-shadow:
+    0 5px 10px rgba(0, 0, 0, 0.02),
+    0 40px 80px rgba(0, 0, 0, 0.04)
+;
+}

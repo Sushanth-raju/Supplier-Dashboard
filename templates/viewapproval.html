@@ -1,0 +1,225 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>View Approved Stock</title>
+
+    <style>
+        table {
+            border-spacing: 125px 0px;
+            padding-bottom: 7px;
+            padding-left: 7px;
+            padding-top: 7px;
+        }
+        
+        table td {
+            border-top: thin solid;
+            border-bottom: thin solid;
+            border-spacing: 0px;
+            border-color: lightgray;
+        }
+        
+        table td:first-child {
+            border-left: thin solid;
+            border-color: lightgray;
+        }
+        
+        table td:last-child {
+            border-right: thin solid;
+            border-color: lightgray;
+        }
+        
+        th {
+            text-align: left;
+            padding: 0px;
+            border-collapse: separate;
+        }
+        
+        td {
+            text-align: left;
+            padding: 0px;
+            border-collapse: separate;
+        }
+        
+        tr {
+            font-weight: bold;
+        }
+        
+        th {
+            padding: 0px;
+            background-color: white;
+            color: rgb(0, 0, 0);
+        }
+        
+        table.center {
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        #head1 {
+            font-family: sans-serif;
+            font-weight: 100;
+            margin: 0px;
+            padding: 0px;
+            color: rgb(23, 80, 23);
+            font-size: 35px;
+        }
+        
+        #head_div {
+            padding-left: 10%;
+            padding-bottom: 4%;
+            padding-top: 2%;
+            font-size: 24px;
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 900;
+        }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Playfair+Display&display=swap" rel="stylesheet">
+    <link rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/home.css') }}">
+
+
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo"><img src="{{ url_for('static', filename='pics4.png') }}" alt="" /></div>
+            <div class="menu">
+                <a href="/logout_sess">LOG OUT</a>
+            </div>
+        </nav>
+
+        <main>
+            <div id="head_div">
+                <h2>View Approved Stock</h2>
+            </div>
+
+            <table class="table table-success table-striped">
+                <tr>
+                    <th><b>Product</b></th>
+                    <th><b>Quantity</b></th>
+                    <th><b>Status</b></th>
+                    <th><b>No of days to deliver</b></th>
+                    <th><b>Reason</b></th>
+                </tr>
+                {%for row in tbl%}
+                <tr>
+                    {%for col in row%}
+                    <td>{{col}}</td>
+                    {%endfor%}
+
+                </tr>
+                {%endfor%}
+            </table>
+
+        </main>
+    </header>
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+<!-- <html>
+    <head>
+        <title>View Approved Stock</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles/home.css') }}"/>
+        <style>
+            body {
+            margin: 0;
+            padding: 0;
+            background-image: url('https://www.dnnsoftware.com/Portals/0/Images/hero-background-4-5.jpg?ver=2017-08-17-191010-163');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative
+        }
+
+        button {
+            padding: 10px;
+            display: block;
+            float: right;
+            background-color: #02225c;
+            color: white;
+            text-align: center;
+        }
+
+        button:hover {
+            background-color: #254b85;
+        }
+
+        table,
+        th,
+        td {
+            border: 1;
+            border-bottom: 1px solid #faf9f9;
+            border-collapse: collapse;
+            text-align: left;
+            padding: 10px;
+            margin-bottom: 40px;
+            font-size: 0.9em;
+            background-color: rgb(244, 247, 248);
+        }
+
+        input[type=date],
+        input[type=text],
+        input[type=password],
+        input[type=number],
+        select {
+            width: 30%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type=submit] {
+            width: 30%;
+            background-color: #02225c;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type=submit]:hover {
+            background-color: #254b85;
+        }
+    </style>
+</head>
+
+<body>
+    
+    <h1>
+        <center>VIEW PREVIOUS STOCKS</center>
+    </h1>
+    <br><br>
+    <center>
+        <form action="/previous" method="POST">
+            <label for="from">FROM:</label><br>
+            <input type="date" id="from" name="from" format="yyyy/mm/dd" placeholder="YYYY/MM/DD" required><br><br>
+            <label for="to">TO:</label><br>
+            <input type="date" id="to" name="to" format="yyyy/mm/dd" placeholder="YYYY/MM/DD" required><br>
+            <input type="submit" value="SUBMIT">
+        </form>
+    </center>
+    <br><br>
+    <center>
+       
+         </center>
+    </body>
+</html> -->

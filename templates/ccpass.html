@@ -1,0 +1,45 @@
+<html>
+    <head>
+        <title>Change password</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles/home.css') }}"/>
+        <style>
+            body {
+            margin: 0;
+            padding: 0;
+            background-image: url('https://www.dnnsoftware.com/Portals/0/Images/hero-background-4-5.jpg?ver=2017-08-17-191010-163');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative
+            }
+            button {
+            padding: 10px;
+            display:block;
+            float:right;
+            background-color:#02225c;
+            color: white;
+            text-align:center;
+            }
+            button:hover {
+            background-color: #254b85;
+            }
+        </style>
+    </head>
+    <body>
+        <a href="/"><button>HOME</button></a>
+        <br><br>
+        <h1><center>PASSWORD CHANGE</center></h1>
+        <br><br><br><br>
+        <form method="POST" action="/slogin">
+        <center>
+            <label for="pass"><b>NEW PASSWORD </b> </label><br>
+            <input id = "pass" type="password" name="pass" placeholder="New password" required><br><br>
+            <label for="cpass"><b>CONFIRM PASSWORD </b> </label><br>
+            <input id = "cpass" type="password" name="cpass" placeholder="Confirm password" required><br><br>
+            <input type="submit" value="CHANGE PASSWORD">
+        </center>
+        </form>
+        <br>
+        <p><center><b>{{ msg }}</b></center></p>
+    </body>
+</html>

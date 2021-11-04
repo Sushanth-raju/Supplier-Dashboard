@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  <title>Previous stock</title>
+  <style>
+    .body_container {
+      width: 50%;
+      height: 500px;
+
+      margin-left: 190px;
+      margin-top: 20px;
+    }
+
+    .heading {
+      align-items: center;
+      font-weight: bold;
+      font-family: 'Times New Roman', Times, serif;
+    }
+    nav {
+        width: 100%;
+        height: 12vh;
+        background-color: rgba(255, 255, 255, 0.233);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        text-transform: uppercase;
+        border-bottom: 2px solid lightgrey;
+      }
+      nav .logo {
+        width: 25%;
+        text-align: center;
+        color: #e06f06;
+      }
+      nav .menu {
+        width: 40%;
+        display: flex;
+        justify-content: space-around;
+      }
+      nav .menu a {
+        margin-left: 250px;
+        width: 25%;
+        text-decoration: none;
+        color: #e06f06;
+        font-weight: bold;
+        border-style: solid;
+        text-align: center;
+        padding: 15px;
+      }
+
+      nav .menu a:first-child {
+        color: green;
+      }
+    .table {
+      border-collapse: collapse;
+
+    }
+
+    td {
+      width: 150px;
+      text-align: center;
+      border: 1px solid black;
+      padding: 10px
+    }
+
+    th {
+      width: 150px;
+      text-align: center;
+      padding: 10px;
+    }
+
+    .geeks {
+      border-right: hidden;
+
+    }
+
+    .geeks_r {
+      border-left: hidden;
+
+    }
+
+    .gfg {
+      border-collapse: separate;
+      border-spacing: 0 15px;
+    }
+
+    .td_hid_b {
+      border-right: hidden;
+      border-left: hidden;
+    }
+
+    p {
+      margin-bottom: 0rem;
+    }
+
+    input {
+      width: 90%;
+    }
+
+    .submit_btn {
+      width: 100%;
+      height: 30px;
+      background-color: #00442f;
+      color: white;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      text-align: center;
+      border: none;
+    }
+
+    .submit_btn:hover {
+      color: white;
+    }
+
+    .form_container {
+      width: 90%;
+    }
+
+    .table_container {
+      width: 90%;
+    }
+
+    .width__ {
+      width: 100%;
+    }
+
+    .tr_ {
+      border: 1px solid black;
+    }
+
+    .logout_btn {
+      color: #00442f;
+
+    }
+
+    .logout_btn:hover {
+      background-color: #00442f;
+
+    }
+
+    .border-bottom {
+      border-bottom: 1px solid #00442f !important;
+    }
+
+    th,
+    td {
+      width: 200px;
+      text-align: center;
+    }
+
+    .g_border {
+      border: 1px solid black;
+    }
+
+    .header_table {
+      text-align: center;
+      padding: 5px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+
+    .headers {
+      margin-bottom: 30px;
+    }
+
+    .p_table_data {
+      width: 200px;
+    }
+
+    input[type="date"]::-webkit-calendar-picker-indicator {
+      color: rgba(0, 0, 0, 0);
+      opacity: 1;
+      display: block;
+      background: url(../static/images/calendar_btn.svg) no-repeat;
+      width: 20px;
+      height: 20px;
+      border-width: thin;
+    }
+  </style>
+</head>
+
+<body>
+
+
+  <nav>
+      <div class="logo">
+        <img src="{{ url_for('static', filename='pics4.png') }}" alt="" />
+      </div>
+      <div class="menu">
+        <a href="/logout_sess">LOG OUT</a>
+      </div>
+    </nav>
+  <div class="body_container">
+    <h3 class="heading">View previous stocks</h3>
+    <div class="form_container w-75">
+      <form action="/previous" method="POST">
+        <div class="width__">
+          <label for="from">From</label>
+          <input type="date" class="width__" id="from" name="from" format="yyyy/mm/dd" placeholder="YYYY/MM/DD"
+            required>
+        </div>
+        <div class="width__">
+          <label for="to">TO</label>
+          <input type="date" class="width__" id="to" name="to" format="yyyy/mm/dd" placeholder="YYYY/MM/DD" required>
+        </div>
+        <button href="" class="submit_btn" value="SUBMIT" type="submit">SUBMIT</button>
+      </form>
+    </div>
+    <div class="table_container w-75">
+
+      <!--<table class = "gfg table_  width__">
+        <tr >
+          <th >Product</th>
+          <th >Quantity</th>
+          <th >Status</th>
+        </tr>
+         This code need to test -->
+        <div class="header_table headers d-flex justify-content-between w-100">
+          <h5>Sn No.</h5>
+          <h5>Product</h5>
+          <h5>Price</h5>
+        </div>
+        {%for row in tbl%}
+          <div class="header_table g_border d-flex justify-content-between w-100">
+            <p class="p_table_data">{{row[0]}}</p>
+            <p class="p_table_data">{{row[1]}}</p>
+            <p class="p_table_data">{{row[2]}}</p>
+        </div>
+        {%endfor%}
+          
+    </table>
+  </div>
+  </div>
+
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+<!-- <html>
+
+<head>
+    <title>Previous stock</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('https://www.dnnsoftware.com/Portals/0/Images/hero-background-4-5.jpg?ver=2017-08-17-191010-163');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative
+        }
+
+        button {
+            padding: 10px;
+            display: block;
+            float: right;
+            background-color: #02225c;
+            color: white;
+            text-align: center;
+        }
+
+        button:hover {
+            background-color: #254b85;
+        }
+
+        table,
+        th,
+        td {
+            border: 1;
+            border-bottom: 1px solid #faf9f9;
+            border-collapse: collapse;
+            text-align: left;
+            padding: 10px;
+            margin-bottom: 40px;
+            font-size: 0.9em;
+            background-color: rgb(244, 247, 248);
+        }
+
+        input[type=date],
+        input[type=text],
+        input[type=password],
+        input[type=number],
+        select {
+            width: 30%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type=submit] {
+            width: 30%;
+            background-color: #02225c;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type=submit]:hover {
+            background-color: #254b85;
+        }
+    </style>
+</head>
+
+<body>
+    
+    <h1>
+        <center>VIEW PREVIOUS STOCKS</center>
+    </h1>
+    <br><br>
+    <center>
+        <form action="/previous" method="POST">
+            <label for="from">FROM:</label><br>
+            <input type="date" id="from" name="from" format="yyyy/mm/dd" placeholder="YYYY/MM/DD" required><br><br>
+            <label for="to">TO:</label><br>
+            <input type="date" id="to" name="to" format="yyyy/mm/dd" placeholder="YYYY/MM/DD" required><br>
+            <input type="submit" value="SUBMIT">
+        </form>
+    </center>
+    <br><br>
+    <center>
+        <table>
+            {%for row in tbl%}
+            <tr>
+                {%for col in row%}
+                <td>{{col}}</td>
+                {%endfor%}
+
+            </tr>
+            {%endfor%}
+        </table>
+    </center>
+</body>
+
+</html> -->

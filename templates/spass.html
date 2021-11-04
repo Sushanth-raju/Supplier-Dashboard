@@ -1,0 +1,157 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change Password</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/home.css') }}">
+
+</head>
+<body>
+	<header>
+		<nav>
+			<div class="logo"><img src="{{ url_for('static', filename='pics4.png') }}" alt=""/></div>
+			<div class="menu">
+			<a href="/logout_sess">LOG OUT</a>
+			</div>
+		</nav>
+	
+	<main>
+		<div class="wrapper">
+         <div class="title-text">
+            <div class="title login">
+               Change Password
+            </div>
+          </div>
+         
+            <div class="form-inner">
+               <form method="POST" action="/spassword" class="signup">
+                  <div class="field">
+                  	<label>CURRENT PASSWORD</label>
+                     <input id="cpassw" type="password" name="cpassw" placeholder="Current Password" required>
+                  </div><br>
+
+                  <div class="field">
+                  	<label>NEW PASSWORD</label>
+                     <input input id="npassw" type="password" name="npassw" placeholder="New Password" required>
+                  </div><br>
+
+                  <div class="field">
+                  	<label>RE-ENTER NEW PASSWORD</label>
+                     <input input id="rnpassw" type="password" name="rnpassw" placeholder="Re-Enter New Password" required>
+                  </div><br>
+                  <div class="field btn">
+                     <div class="btn-layer"></div>
+                     <a href="#"><input type="submit" value="Login"></a>
+                  </div>
+               </form>
+            </div>
+         </div>
+      </div>
+
+	</main>
+</header>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+<!-- <html>
+    <head>
+        <title>Stocks to approve</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles/home.css') }}"/>
+        <style>
+            body {
+            margin: 0;
+            padding: 0;
+            background-image: url('https://www.dnnsoftware.com/Portals/0/Images/hero-background-4-5.jpg?ver=2017-08-17-191010-163');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative
+            }
+            button {
+            padding: 10px;
+            display:block;
+            float:right;
+            background-color:#02225c;
+            color: white;
+            text-align:center;
+            }
+            button:hover {
+            background-color: #254b85;
+            }
+            input[type=select] {
+            width: 15%;
+            background-color:#02225c;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            }
+            table,th,td {
+            border: 1;
+            border-bottom: 1px solid #faf9f9;
+            border-collapse: collapse;
+            text-align:left;
+            padding: 10px;
+            margin-bottom: 40px;
+            font-size: 0.9em;
+            background-color: rgb(244, 247, 248);
+            }
+        </style>
+    </head>
+    <body>
+        <a href="/supplier_back"><button>BACK</button></a>
+        <br>
+        <br><br>
+        <center><h1>Enter Stock Status</h1></center>
+        <br><br>
+        
+        <center>
+            <form action="/sa" method="POST">
+            <table>
+                <tr>
+                    <th><b>Product</b></th>
+                    <th><b>quantity</b></th>
+                    <th><b>Click checkbox to approve</b></th>
+                    <th><b>No of days to deliver</b></th>
+                    <th><b>Reason</b></th>
+                </tr>
+                {%for row in tbl%}
+                   <tr>
+                      <td>{{ row.product }}</td>
+                      <td>{{ row.quantity }}</td>
+                      <td><input type="checkbox" name="mycheckbox" value="{{ row._id }}"></td>
+                      <td><input type="number" id="days" name="days"></td>
+                   
+
+                      <td>
+                        <input list="reasons" name="reason" id="reason">
+                        <datalist  id="reasons">
+                            <option value="Available">Available</option>
+                            <option value="Out of stock">Out of stock</option>
+                            <option value="No Market Demand">No Market Demand</option>
+                        </datalist>
+
+                    </td>
+
+                   </tr>
+                {%endfor%}
+            </table>
+            <br><br>
+            <input type="submit">
+            </form>
+         </center>
+    </body>
+</html> -->

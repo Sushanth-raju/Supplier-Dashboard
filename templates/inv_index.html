@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <!-- Bootstrap 5 CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
+      integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I"
+      crossorigin="anonymous"
+    />
+    <!-- Font Awesome CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+      integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <title>Inventory Index</title>
+<!--
+    <link rel="stylesheet" href="style.css">
+    -->
+
+    <style>
+      th,
+      td {
+        border: 0px solid black;
+        border-margin: 2px;
+    }
+    body {
+        margin: 0px;
+        padding: 0px;
+    }
+    nav {
+        width: 100%;
+        height: 12vh;
+        background-color: rgba(255, 255, 255, 0.233);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        text-transform: uppercase;
+        border-bottom: 2px solid lightgrey;
+    }
+    nav .logo {
+        width: 25%;
+        text-align: center;
+        color: #e06f06;
+    }
+    nav .menu {
+        width: 40%;
+        display: flex;
+        justify-content: space-around;
+    }
+
+    nav .menu a {
+        margin-left: 250px;
+        width: 25%;
+        text-decoration: none;
+        color: #e06f06;
+        font-weight: bold;
+        border-style: solid;
+        text-align: center;
+        padding: 15px;
+    }
+
+    nav .menu a:first-child {
+        color: green;
+    }
+
+    #container {
+        width: 40%;
+        height: 80px;
+        margin: 20px;
+        display: inline-block;
+        border: 2px solid black;
+        text-align: center;
+        padding: 100px;
+
+    }
+
+    .box {
+        width: 100%;
+        height: 30px;
+        margin: 10px;
+        display: inline-block;
+        border: 1px solid #00442F;
+        text-align: center;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 20px;
+        border-width: thin;
+        font-weight: bold;
+
+
+    }
+
+    .center {
+        margin: 100px auto;
+        width: 20%;
+        border: 50px;
+        padding: 100px;
+        text-align: center;
+    }
+
+    a {
+        text-decoration: none ;
+        color: black;
+        position: relative;
+        margin-left: 15px;
+        font-weight: normal;
+
+    }
+
+    a:hover {
+      text-decoration:none;
+      color:black;
+    }
+
+    h1 {
+        font-size: 45px;
+        font-family: 'Playfair Display', serif;
+        padding-top : 30px;
+    }
+    
+    .flex-container {
+        width: 80%;
+        margin-left: 10%;
+        height: auto;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    #container {
+        width: 40%;
+        height: 80px;
+        margin: 20px;
+        display: inline-block;
+        border: 2px solid black;
+        text-align: center;
+        padding: 100px;
+
+    }
+    .flex-box {
+        width: 25%;
+        height: 50px;
+        background: white;
+        color: black;
+        border: 2px solid #00442F;
+        border-radius: 1px;
+        margin: 10px;
+        text-align: left;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 20px;
+        border-width: thin;
+        font-weight: bold;
+        padding-top: 12px;
+        justify-content: right;
+        padding-left: 50px;
+    }
+
+    .flex-box:hover {
+        background-color: lightgrey
+    }
+    
+
+    </style>
+  </head>
+
+  <body>
+    <header>
+
+      <nav>
+			  <div class="logo"><img src="{{ url_for('static', filename='pics4.png') }}" alt=""/></div>
+			  <div class="menu">
+			    <a href="/logout_sess">LOG OUT</a>
+			  </div>
+		  </nav>
+    </header>
+    
+    <h1 align='center'>Inventory</h1>
+    <br>
+    <br>
+    <div class="flex-container">
+
+    
+     <form id="form_1" action="/edit_inventory" method="POST">
+            <input id="send_val" value="" name="findItems" type="hidden" />
+        </form>
+
+      <div id="id_edit_inventory" class="flex-box"><i class="fa fa-car"></i><a href='#'>Edit Inventory</a></div>
+
+        <script>
+              document.getElementById('id_edit_inventory').onclick = function sup_click() {
+              document.getElementById('send_val').value = 1;
+              document.getElementById('form_1').submit();
+            }
+        </script>
+
+        <form id="form_2" action="/view_inventory" method="POST">
+            <input id="send_val" value="" name="findItems" type="hidden" />
+        </form>
+      
+      <div id="id_view_inventory" class="flex-box"><i class="fa fa-eye fa-fw"></i><a href="#">View Inventory</a></div>
+
+        <script>
+              document.getElementById('id_view_inventory').onclick = function sup_click() {
+              document.getElementById('send_val').value = 1;
+              document.getElementById('form_2').submit();
+            }
+        </script>
+
+      <form id="form_3" action="/add_inventory" method="POST">
+            <input id="send_val" value="" name="findItems" type="hidden" />
+      </form>
+
+      <div id="id_add_stock" class="flex-box"><i class="fa fa-plus-square fa-fw"></i><a href="#">Add stock
+                </a></div>
+
+      <script>
+              document.getElementById('id_add_stock').onclick = function sup_click() {
+              document.getElementById('send_val').value = 1;
+              document.getElementById('form_3').submit();
+            }
+        </script>
+
+      <form id="form_4" action="/remove_inventory" method="POST">
+            <input id="send_val" value="" name="findItems" type="hidden" />
+      </form>
+
+      <div id="id_remove" class="flex-box"><i class="fa fa-trash fa-fw"></i><a href="#">Remove
+                </a></div>
+
+      <script>
+              document.getElementById('id_remove').onclick = function sup_click() {
+              document.getElementById('send_val').value = 1;
+              document.getElementById('form_4').submit();
+            }
+        </script>
+
+      <form id="form_5" action="/set_treshold" method="POST">
+            <input id="send_val" value="" name="findItems" type="hidden" />
+        </form>
+      
+      <div id="id_set_threshold" class="flex-box"><a href='#'>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-check-all"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M8.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L2.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093L8.95 4.992a.252.252 0 0 1 .02-.022zm-.92 5.14.92.92a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 1 0-1.091-1.028L9.477 9.417l-.485-.486-.943 1.179z"
+                  />
+                </svg>Set Treshold</a>
+      </div>
+
+      <script>
+              document.getElementById('id_set_threshold').onclick = function sup_click() {
+              document.getElementById('send_val').value = 1;
+              document.getElementById('form_5').submit();
+            }
+        </script>
+
+      <form id="form_6" action="/ivcpass" method="POST">
+            <input id="send_val" value="" name="findItems" type="hidden" />
+        </form>
+
+      <div id="id_change_password" class="flex-box"><i class="fa fa-lock fa-fw"></i><a href="#">Change Password</a></div>
+
+      <script>
+              document.getElementById('id_change_password').onclick = function sup_click() {
+              document.getElementById('send_val').value = 1;
+              document.getElementById('form_6').submit();
+            }
+        </script>
+
+    </div>
+    
+    <!--
+      <div style="margin-top: 100px">
+        <table>
+          <tr>
+            <td class="size_btn_center">
+              <a
+                type="button"
+                class="btn btn-outline-secondary rounded-0 menu_btn"
+                href="/edit_inventory"
+                method="post"
+              >
+                <i class="fa fa-car"></i>
+                <span class="visually-hidden" style="text-align: center"
+                  >Edit Inventory
+                </span>
+              </a>
+            </td>
+            <td class="size_btn_center">
+              <a
+                type="button"
+                class="btn btn-outline-secondary rounded-0 menu_btn"
+                href="/view_inventory"
+                method="post"
+              >
+                <i class="fa fa-eye"></i>
+                <span class="visually-hidden">View Inventory </span>
+              </a>
+            </td>
+            <td class="size_btn_center">
+              <a
+                type="button"
+                class="btn btn-outline-secondary rounded-0 menu_btn"
+                href="/add_inventory"
+                method="post"
+              >
+                <i class="fa fa-plus-square"></i>
+                <span class="visually-hidden">Add stock </span>
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td class="size_btn_center">
+              <a
+                type="button"
+                class="btn btn-outline-secondary rounded-0 menu_btn"
+                href="/remove_inventory"
+                method="post"
+              >
+                <i class="fa fa-trash"></i>
+                <span class="visually-hidden">Remove </span>
+              </a>
+            </td>
+            <td class="size_btn_center">
+              <a
+                type="button"
+                class="btn btn-outline-secondary rounded-0 menu_btn"
+                href="/set_treshold"
+                method="post"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-check-all"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M8.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L2.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093L8.95 4.992a.252.252 0 0 1 .02-.022zm-.92 5.14.92.92a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 1 0-1.091-1.028L9.477 9.417l-.485-.486-.943 1.179z"
+                  />
+                </svg>
+                <span class="visually-hidden">Set Treshold </span>
+              </a>
+            </td>
+            <td class="size_btn_center">
+              <a
+                type="button"
+                class="btn btn-outline-secondary rounded-0 menu_btn"
+                href="/ivcpass"
+              >
+                <i class="fa fa-lock"></i>
+                <span class="visually-hidden">Change password </span>
+              </a>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    -->
+    
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

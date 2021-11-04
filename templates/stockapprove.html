@@ -1,0 +1,536 @@
+<!-- <!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Company index</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Playfair+Display&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<style>
+    div.solid {
+        border-style: solid;
+        height: 12vh;
+        width: 100%;
+        border-width: thin;
+        border-color: #00442F;
+    }
+
+    body {
+        margin: 0px;
+        padding: 0px;
+    }
+
+    .button {
+        padding: 15px;
+        display: block;
+        float: right;
+        font-size: 15px;
+        margin: 20px 150px;
+        cursor: pointer;
+        color: #00442F;
+        text-align: center;
+        border: 2px solid #00442F;
+        width: 120px;
+        font-family: 'Open Sans', sans-serif;
+        font-weight: 900;
+    }
+
+    h1 {
+        font-size: 45px;
+        font-family: 'Playfair Display', serif;
+
+    }
+
+    #container {
+        width: 40%;
+        height: 80px;
+        margin: 20px;
+        display: inline-block;
+        border: 2px solid black;
+        text-align: center;
+        padding: 100px;
+
+    }
+
+    .box {
+        width: 100%;
+        height: 30px;
+        margin: 10px;
+        display: inline-block;
+        border: 1px solid #00442F;
+        text-align: center;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 20px;
+        border-width: thin;
+        font-weight: bold;
+
+
+    }
+
+    .center {
+        margin: 100px auto;
+        width: 20%;
+        border: 50px;
+        padding: 100px;
+        text-align: center;
+    }
+
+    a {
+        text-decoration: none;
+        color: black;
+        position: relative;
+        margin-left: 15px;
+
+
+    }
+
+    .flex-container {
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .flex-box {
+        width: 19%;
+        height: 40px;
+        background: white;
+        color: black;
+        border: 2px solid #00442F;
+        border-radius: 1px;
+        margin: 10px;
+        text-align: left;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 20px;
+        border-width: thin;
+        font-weight: bold;
+        padding-top: 12px;
+        justify-content: right;
+        padding-left: 50px;
+    }
+
+    .flex-box:hover {
+        background-color: lightgrey
+    }
+    table {
+            border-spacing: 0 15px;
+        }
+
+        table td {
+            border-top: thin solid;
+            border-bottom: thin solid;
+            border-spacing: 15px;
+            border-color: lightgray;
+
+
+
+        }
+
+        table td:first-child {
+            border-left: thin solid;
+            border-color: lightgray;
+        }
+
+        table td:last-child {
+            border-right: thin solid;
+            border-color: lightgray;
+        }
+
+        th {
+            text-align: left;
+            padding: 15px;
+            border-collapse: separate;
+
+        }
+
+        td {
+            text-align: left;
+            padding: 15px;
+            border-collapse: separate;
+
+        }
+
+
+        tr {
+            font-weight: bold;
+
+        }
+
+        th {
+            background-color: white;
+            color: rgb(0, 0, 0);
+
+        }
+
+        table.center {
+            margin-left: auto;
+            margin-right: auto;
+        }
+</style>
+
+<body>
+    <header>
+
+        <div class="button"><a href="/">LOG OUT</a></div>
+        <div class="solid"><img src="{{url_for('static',filename='zang_logo.png')}}" align="left"
+                style="padding: 25px;"></div>
+    </header>
+
+    <form action="/sa" method="POST">
+        <table class="table table-success table-striped">
+            <tr>
+                <th><b>Product</b></th>
+                <th><b>quantity</b></th>
+                <th><b>Click checkbox to approve</b></th>
+                <th><b>No of days to deliver</b></th>
+                <th><b>Reason</b></th>
+            </tr>
+            {%for row in tbl%}
+            <tr>
+                <td>{{ row.product }}</td>
+                <td>{{ row.quantity }}</td>
+                <td><input type="checkbox" name="mycheckbox" value="{{ row._id }}" style="font-weight:bold"></td>
+                <td><input type="number" id="days" name="days"></td>
+
+
+                <td>
+                    <input list="reasons" name="reason" id="reason">
+                    <datalist id="reasons">
+                        <option value="Available">Available</option>
+                        <option value="Out of stock">Out of stock</option>
+                        <option value="No Market Demand">No Market Demand</option>
+                    </datalist>
+
+                </td>
+
+            </tr>
+            {%endfor%}
+        </table>
+        <br><br>
+        <style>
+            #btn_submit {
+                background-color: rgb(18, 61, 18);
+
+                /* Green */
+                border: none;
+                color: white;
+                padding: 10px 150px;
+                text-align: left;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                margin: 4px 30%;
+                cursor: pointer;
+
+            }
+
+            
+        </style>
+
+        <button id="btn_submit">Submit </button>
+
+    </form>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/js/all.min.js"></script>
+
+</body>
+
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stocks to approve</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+
+</head>
+
+<body style="background-color: white">
+
+    <style>
+        table {
+            border-spacing: 0 15px;
+        }
+
+        table td {
+            border-top: thin solid;
+            border-bottom: thin solid;
+            border-spacing: 15px;
+            border-color: lightgray;
+
+
+
+        }
+
+        table td:first-child {
+            border-left: thin solid;
+            border-color: lightgray;
+        }
+
+        table td:last-child {
+            border-right: thin solid;
+            border-color: lightgray;
+        }
+
+        th {
+            text-align: left;
+            padding: 15px;
+            border-collapse: separate;
+
+        }
+
+        td {
+            text-align: left;
+            padding: 15px;
+            border-collapse: separate;
+
+        }
+
+
+        tr {
+            font-weight: bold;
+
+        }
+
+        th {
+            background-color: white;
+            color: rgb(0, 0, 0);
+
+        }
+
+        table.center {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        #head1 {
+            font-family: sans-serif;
+            font-weight: 100;
+            margin: 0px;
+            padding: 0px;
+            color: rgb(23, 80, 23);
+            font-size: 35px;
+        }
+
+        #head_div { 
+            padding-bottom: 4%;
+            padding-top: 8%;
+            font-size: 25px;
+            font-family: Playfair Display;
+            font-weight: bold;
+        }
+        .align-table {
+            margin-left: 130px;
+        }
+        
+    
+    </style>
+
+
+
+    <div id="t_div">
+
+        <img src="{{url_for('static', filename='zang_logo.png')}}" align="left" style="padding-left: 50px;padding-top: 25px; margin-left:75px ;" />
+        <br><br><br><br>
+        <hr size="1" width="190%" color="#00442F">
+
+        <div class="align-table">
+        <div id="head_div">
+            <h2>Enter stock status</h2>
+        </div>
+
+        <form action="/sa" method="POST">
+            <table class="table table-success table-striped">
+                <tr>
+                    <th><b>Product</b></th>
+                    <th><b>quantity</b></th>
+                    <th><b>Click checkbox to approve</b></th>
+                    <th><b>No of days to deliver</b></th>
+                    <th><b>Reason</b></th>
+                </tr>
+                {%for row in tbl%}
+                <tr>
+                    <td>{{ row.product }}</td>
+                    <td>{{ row.quantity }}</td>
+                    <td><input type="checkbox" name="mycheckbox" value="{{ row._id }}" style="font-weight:bold"></td>
+                    <td><input type="number" id="days" name="days"></td>
+
+
+                    <td>
+                        <input list="reasons" name="reason" id="reason">
+                        <datalist id="reasons">
+                            <option value="Available">Available</option>
+                            <option value="Out of stock">Out of stock</option>
+                            <option value="No Market Demand">No Market Demand</option>
+                        </datalist>
+
+                    </td>
+
+                </tr>
+                {%endfor%}
+            </table>
+        </div>
+            <br><br>
+            <style>
+                #btn_submit {
+                    background-color: #00442F;
+
+                    /* Green */
+                    border: none;
+                    color: white;
+                    padding: 10px 150px;
+                    text-align: center;
+                    text-decoration: none;
+                    display: inline-block;
+                    font-size: 16px;
+                    margin: 4px 30%;
+                    cursor: pointer;
+
+                }
+
+                #btn_submit1 {
+                    background-color: white;
+                    /* Green */
+                    border: 2px solid #00442F;
+                    color: #00442F;
+                    padding: 10px 50px;
+                    text-align: center;
+                    text-decoration: none;
+
+                    font-size: 16px;
+                    margin: 2px 30%;
+                    cursor: pointer;
+                    position: absolute;
+                    top: 15px;
+                    left: 50%;
+
+
+                }
+            </style>
+
+            <button id="btn_submit">Submit </button>
+
+        </form>
+        <form action="/logout_sess">
+            <button id="btn_submit1">LOGOUT </button>
+        </form>
+    </div>
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/js/all.min.js"></script>
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+<!-- <html>
+    <head>
+        <title>Stocks to approve</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles/home.css') }}"/>
+        <style>
+            body {
+            margin: 0;
+            padding: 0;
+            background-image: url('https://www.dnnsoftware.com/Portals/0/Images/hero-background-4-5.jpg?ver=2017-08-17-191010-163');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative
+            }
+            button {
+            padding: 10px;
+            display:block;
+            float:right;
+            background-color:#02225c;
+            color: white;
+            text-align:center;
+            }
+            button:hover {
+            background-color: #254b85;
+            }
+            input[type=select] {
+            width: 15%;
+            background-color:#02225c;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            }
+            table,th,td {
+            border: 1;
+            border-bottom: 1px solid #faf9f9;
+            border-collapse: collapse;
+            text-align:left;
+            padding: 10px;
+            margin-bottom: 40px;
+            font-size: 0.9em;
+            background-color: rgb(244, 247, 248);
+            }
+        </style>
+    </head>
+    <body>
+        <a href="/supplier_back"><button>BACK</button></a>
+        <br>
+        <br><br>
+        <center><h1>Enter Stock Status</h1></center>
+        <br><br>
+        
+        <center>
+            <form action="/sa" method="POST">
+            <table>
+                <tr>
+                    <th><b>Product</b></th>
+                    <th><b>quantity</b></th>
+                    <th><b>Click checkbox to approve</b></th>
+                    <th><b>No of days to deliver</b></th>
+                    <th><b>Reason</b></th>
+                </tr>
+                {%for row in tbl%}
+                   <tr>
+                      <td>{{ row.product }}</td>
+                      <td>{{ row.quantity }}</td>
+                      <td><input type="checkbox" name="mycheckbox" value="{{ row._id }}"></td>
+                      <td><input type="number" id="days" name="days"></td>
+                   
+
+                      <td>
+                        <input list="reasons" name="reason" id="reason">
+                        <datalist  id="reasons">
+                            <option value="Available">Available</option>
+                            <option value="Out of stock">Out of stock</option>
+                            <option value="No Market Demand">No Market Demand</option>
+                        </datalist>
+
+                    </td>
+
+                   </tr>
+                {%endfor%}
+            </table>
+            <br><br>
+            <input type="submit">
+            </form>
+         </center>
+    </body>
+</html> -->

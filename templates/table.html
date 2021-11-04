@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+
+        th {
+            background-color: green;
+            Color: white;
+        }
+
+        th,
+        td {
+            width: 150px;
+            text-align: center;
+            border: 1px solid black;
+            padding: 5px
+        }
+
+        .geeks {
+            border-right: hidden;
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px;
+        }
+
+        .geeks_r {
+            border-left: hidden;
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+
+        .gfg {
+            border-collapse: separate;
+            border-spacing: 0 15px;
+        }
+
+        .td_hid_b {
+            border-right: hidden;
+            border-left: hidden;
+        }
+
+        h1 {
+            color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <center>
+        <h1>GeeksforGeeks</h1>
+        <h2>Row spacing in a table</h2>
+        <table>
+            <tr>
+                <th>Employee ID</th>
+                <th>Name</th>
+                <th>Gender</th>
+                <th>Age</th>
+            </tr>
+        </table>
+        <table class="gfg">
+            <tr>
+                <td class="geeks">10001</td>
+                <td class="td_hid_b">Thomas</td>
+                <td class="td_hid_b">M</td>
+                <td class="geeks_r">32</td>
+            </tr>
+            <tr>
+                <td class="geeks">10002</td>
+                <td class="td_hid_b">Sally</td>
+                <td class="td_hid_b">F</td>
+                <td class="geeks_r">28</td>
+            </tr>
+            <tr>
+                <td class="geeks">10003</td>
+                <td class="td_hid_b">Anthony</td>
+                <td class="td_hid_b">M</td>
+                <td class="geeks_r">24</td>
+            </tr>
+        </table>
+    </center>
+</body>
+
+</html>
